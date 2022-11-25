@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Aliexpress" thread-count="2" parallel="tests">
+    <listeners>
+        <listener class-name="testNgUtils.SelenideListener"/>
+    </listeners>
+
+    <test enabled="false" name="Aliexpress Cart tests">
+        <classes>
+            <class name="aliexpress.CartTest"/>
+        </classes>
+    </test>
+    <test enabled="false" name="Aliexpress login tests">
+        <classes>
+            <class name="aliexpress.LoginTest"/>
+        </classes>
+    </test>
+    <test name="Aliexpress hidden button tests">
+        <classes>
+            <class name="aliexpress.HiddenButtonTest"/>
+        </classes>
+    </test>
+</suite>
