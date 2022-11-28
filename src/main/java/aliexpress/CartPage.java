@@ -4,6 +4,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.testng.Assert;
 
 import static aliexpress.HomePage.productNameHP;
@@ -60,14 +61,18 @@ public class CartPage {
         return this;
     }
 
-    public CartPage clickAddOneMoreBtn() {
+    public CartPage checkBordersOfProductAmount() {
         if (deleteBtn.get(1).exists()) {
             amountInput.sendKeys("51");
             Assert.assertEquals(amountInput.getValue(), "50");
             Assert.assertFalse(addOneMoreBtn.get(1).isEnabled());
             addOneMoreBtn.get(1).click();
             Assert.assertEquals(maxAmountTooltip.getText(), "Количество ограничено");
+            amountInput.sendKeys(Keys.chord(Keys.COMMAND + "a"));
             amountInput.sendKeys("1");
+            amountInput.sendKeys(Keys.chord(Keys.COMMAND + "a"));
+            amountInput.sendKeys("0");
+            Assert.assertEquals(amountInput.getValue(), "1");
         } else {
             while (addOneMoreBtn2.get(1).isEnabled()) {
                 addOneMoreBtn2.get(1).click();
