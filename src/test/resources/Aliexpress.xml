@@ -5,19 +5,29 @@
         <listener class-name="testNgUtils.SelenideListener"/>
     </listeners>
 
-    <test enabled="false" name="Aliexpress Cart tests">
+    <test enabled="true" name="Aliexpress Cart tests">
         <classes>
             <class name="aliexpress.CartTest"/>
         </classes>
     </test>
-    <test enabled="false" name="Aliexpress login tests">
+    <test enabled="true" name="Aliexpress login tests">
         <classes>
             <class name="aliexpress.LoginTest"/>
         </classes>
     </test>
-    <test name="Aliexpress hidden button tests">
+    <test enabled="true" name="Aliexpress hidden button test">
         <classes>
             <class name="aliexpress.HiddenButtonTest"/>
+        </classes>
+    </test>
+    <test enabled="true" name="Aliexpress nothing found test">
+        <classes>
+            <class name="aliexpress.NothingFoundTest"/>
+        </classes>
+    </test>
+    <test enabled="true" name="Aliexpress API tests">
+        <classes>
+            <class name="aliexpress.ApiTest"/>
         </classes>
     </test>
 </suite>

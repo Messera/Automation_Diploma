@@ -4,6 +4,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.testng.Assert;
 
 import static com.codeborne.selenide.Selenide.$;
 
@@ -18,6 +19,7 @@ public class HomePage {
     private SelenideElement loginSubmitBtn = $(By.cssSelector("button[type=\"submit\"]"));
     private SelenideElement productName = $(By.className("product-snippet_ProductSnippet__name__1ettdy"));
     private SelenideElement productPrice = $(By.className("snow-price_SnowPrice__mainM__18x8np"));
+    private SelenideElement nothingFoundText = $(By.tagName("h1"));
     public static String productNameHP;
     public static String productPriceHP;
 
@@ -45,6 +47,11 @@ public class HomePage {
 
     public HomePage clickLoginSubmitBtn() {
         loginSubmitBtn.click();
+        return this;
+    }
+
+    public HomePage checkNothingFoundText() {
+        Assert.assertEquals(nothingFoundText.getText(), "Ничего не нашли");
         return this;
     }
 

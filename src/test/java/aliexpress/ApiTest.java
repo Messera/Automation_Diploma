@@ -1,7 +1,9 @@
 package aliexpress;
 
+import com.codeborne.selenide.Selenide;
 import io.restassured.response.Response;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -15,7 +17,7 @@ public class ApiTest {
         baseURI = "https://aliexpress.ru";
     }
 
-    @Test
+    @Test (priority = 10)
     public void post_checkFreeShippingFilter_test() {
         String body = "{\"catId\":\"202000005\",\"g\":\"n\",\"storeIds\":[],\"brandValueIds\":\"\",\"pvid\":\"\",\"isBigSale\":\"n\",\"isFreeShip\":\"y\"," +
                 "\"isFavorite\":\"n\",\"page\":1,\"searchInfo\":\"searchId:0\"}";
@@ -26,10 +28,15 @@ public class ApiTest {
         }
     }
 
-    @Test
+    @Test (priority = 11)
     public void get_checkCartCount_test() {
         Response response = given().header("Content-Type", "application/json").get("/aer-jsonapi/v1/web/cart/count");
         response.then().assertThat().statusCode(200);
             Assert.assertEquals(response.then().extract().response().jsonPath().getString("data.data.count"), "0");
+    }
+
+    @AfterTest
+    public void postcondition() {
+        Selenide.closeWebDriver();
     }
 }

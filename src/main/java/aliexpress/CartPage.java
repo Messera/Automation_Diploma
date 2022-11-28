@@ -32,6 +32,11 @@ public class CartPage {
     private SelenideElement deleteBtn2 = $(By.cssSelector("svg[class*=\"SnowShoppingcartHeader_Header__removeIcon__o27uc\"]"));
     private SelenideElement loginBtn = $(By.cssSelector("button[class*=\"TopHeadV2_ProfileEntryBlock__button__156t9\"]"));
     private SelenideElement myProfileBtn = $(By.cssSelector("a[href*=\"index.htm?tracelog=ws_topbar\"]"));
+    private SelenideElement maxAmountTooltip = $(By.cssSelector("div[data-type=\"tooltip\"]"));
+    private SelenideElement amountInput = $(By.cssSelector("input[class=\"ShoppingcartItemList_NumActionGroup__numInput__ehpij\"]"));
+    private SelenideElement amountInput2 = $(By.cssSelector("div[class=\"SnowShoppingcartProductList_Product__productNumAction__haas9\"]"));
+    private ElementsCollection addOneMoreBtn = $$(By.cssSelector("button[class*=\"ShoppingcartItemList_NumActionGroup__numBtn__ehpij\"]"));
+    private ElementsCollection addOneMoreBtn2 = $$(By.cssSelector("button[class*=\"SnowShoppingcartProductList_ProductNumAction__button__1yo4e\"]"));
 
 
     public CartPage clickSelectAllProducts() {
@@ -52,6 +57,23 @@ public class CartPage {
         myProfileBtn.hover();
         loginBtn.shouldBe(Condition.visible);
         loginBtn.click();
+        return this;
+    }
+
+    public CartPage clickAddOneMoreBtn() {
+        if (deleteBtn.get(1).exists()) {
+            amountInput.sendKeys("51");
+            Assert.assertEquals(amountInput.getValue(), "50");
+            Assert.assertFalse(addOneMoreBtn.get(1).isEnabled());
+            addOneMoreBtn.get(1).click();
+            Assert.assertEquals(maxAmountTooltip.getText(), "Количество ограничено");
+            amountInput.sendKeys("1");
+        } else {
+            while (addOneMoreBtn2.get(1).isEnabled()) {
+                addOneMoreBtn2.get(1).click();
+            }
+            Assert.assertEquals(amountInput2.getText(), "50");
+        }
         return this;
     }
 
