@@ -10,19 +10,18 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class HomePage {
 
-    private SelenideElement searchInput = $(By.id("searchInput"));
-    private SelenideElement cartBtn = $(By.cssSelector("a[href*=\"shopcartDetail\"]"));
-    private SelenideElement loginBtn = $(By.className("SnowHeaderProfileItem_SnowHeaderProfileItem__link__1vsjg"));
-    private SelenideElement loginForm = $(By.cssSelector("div[role=\"dialog\"]"));
-    private SelenideElement email = $(By.id("email"));
-    private SelenideElement password = $(By.id("password"));
-    private SelenideElement loginSubmitBtn = $(By.cssSelector("button[type=\"submit\"]"));
-    private SelenideElement productName = $(By.className("product-snippet_ProductSnippet__name__1ettdy"));
-    private SelenideElement productPrice = $(By.className("snow-price_SnowPrice__mainM__18x8np"));
-    private SelenideElement nothingFoundText = $(By.tagName("h1"));
+    private final SelenideElement searchInput = $(By.id("searchInput"));
+    private final SelenideElement cartBtn = $(By.cssSelector("a[href*=\"shopcartDetail\"]"));
+    private final SelenideElement loginBtn = $(By.className("SnowHeaderProfileItem_SnowHeaderProfileItem__link__1vsjg"));
+    private final SelenideElement loginForm = $(By.cssSelector("div[role=\"dialog\"]"));
+    private final SelenideElement email = $(By.id("email"));
+    private final SelenideElement password = $(By.id("password"));
+    private final SelenideElement loginSubmitBtn = $(By.cssSelector("button[type=\"submit\"]"));
+    private final SelenideElement productName = $(By.className("product-snippet_ProductSnippet__name__1ettdy"));
+    private final SelenideElement productPrice = $(By.className("snow-price_SnowPrice__mainM__18x8np"));
+    private final SelenideElement nothingFoundText = $(By.tagName("h1"));
     public static String productNameHP;
     public static String productPriceHP;
-
 
     public HomePage enterSearch(String text) {
         this.searchInput.sendKeys(text);
@@ -78,5 +77,4 @@ public class HomePage {
         productPriceHP = productPrice.getText();
         return this;
     }
-
 }

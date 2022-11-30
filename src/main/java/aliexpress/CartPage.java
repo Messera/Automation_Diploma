@@ -14,31 +14,30 @@ import static com.codeborne.selenide.Selenide.$$;
 
 public class CartPage {
 
-    private SelenideElement cartCount = $(By.className("Header_ShopCart__counter__1mrlq"));
-    private SelenideElement cartCount2 = $(By.className("snow-ali-kit_Tag__words__afvess"));
-    private SelenideElement selectAllProducts = $(By.cssSelector("svg[class*=\"Checkbox\"]"));
-    private SelenideElement selectAllProducts2 = $(
+    private final SelenideElement cartCount = $(By.className("Header_ShopCart__counter__1mrlq"));
+    private final SelenideElement cartCount2 = $(By.className("snow-ali-kit_Tag__words__afvess"));
+    private final SelenideElement selectAllProducts = $(By.cssSelector("svg[class*=\"Checkbox\"]"));
+    private final SelenideElement selectAllProducts2 = $(
             By.cssSelector("span[class*=\"snow-ali-kit_Checkbox-default__checkbox__14zehn snow-ali-kit_Checkbox__checkbox__1b4u61\"]"));
-    private SelenideElement productName = $(By.className("ShoppingcartItemList_ProductCard__productNameLink__1nl31"));
-    private SelenideElement productName2 = $(By.cssSelector("div[class*=\"SnowShoppingcartProductList_ProductDescription__title__1q4gc\"]"));
-    private SelenideElement productPrice = $(By.className("ShoppingcartItemList_ProductPrice__mainCostPrice__t4iks"));
-    private SelenideElement productPrice2 = $(By.cssSelector("[class=SnowShoppingcartProductList_Product__productPriceDesktop__haas9]>div"));
-    private SelenideElement totalPrice = $(By.cssSelector("h4[class*=\"ShoppingcartOrderOverview_OrderTotal__largeTextSize__18zkw\"]"));
-    private SelenideElement totalPrice2 = $(By.tagName("h2"));
-    private SelenideElement deleteOkBtn = $(By.cssSelector("button[class*=\"ShoppingcartItemList_ControlActionGroup__btn__xpegy\"]"));
-    private ElementsCollection deleteOkBtn2 = $$(By.cssSelector("button[class*=\"snow-ali-kit_Button-Primary__button__acii72\"]"));
-    private SelenideElement emptyCartText = $(By.cssSelector("p[class*=\"ShoppingcartStates_CartState__heading__1ww0f\"]"));
-    private SelenideElement emptyCartText2 = $(By.cssSelector("h1[class*=\"SnowShoppingcartStates_EmptyPage__emptyMargin__2kupu\"]"));
-    private ElementsCollection deleteBtn = $$(By.className("ShoppingcartItemList_ControlActionGroup__actionIcon__xpegy"));
-    private SelenideElement deleteBtn2 = $(By.cssSelector("svg[class*=\"SnowShoppingcartHeader_Header__removeIcon__o27uc\"]"));
-    private SelenideElement loginBtn = $(By.cssSelector("button[class*=\"TopHeadV2_ProfileEntryBlock__button__156t9\"]"));
-    private SelenideElement myProfileBtn = $(By.cssSelector("a[href*=\"index.htm?tracelog=ws_topbar\"]"));
-    private SelenideElement maxAmountTooltip = $(By.cssSelector("div[data-type=\"tooltip\"]"));
-    private SelenideElement amountInput = $(By.cssSelector("input[class=\"ShoppingcartItemList_NumActionGroup__numInput__ehpij\"]"));
-    private SelenideElement amountInput2 = $(By.cssSelector("div[class=\"SnowShoppingcartProductList_Product__productNumAction__haas9\"]"));
-    private ElementsCollection addOneMoreBtn = $$(By.cssSelector("button[class*=\"ShoppingcartItemList_NumActionGroup__numBtn__ehpij\"]"));
-    private ElementsCollection addOneMoreBtn2 = $$(By.cssSelector("button[class*=\"SnowShoppingcartProductList_ProductNumAction__button__1yo4e\"]"));
-
+    private final SelenideElement productName = $(By.className("ShoppingcartItemList_ProductCard__productNameLink__1nl31"));
+    private final SelenideElement productName2 = $(By.cssSelector("div[class*=\"SnowShoppingcartProductList_ProductDescription__title__1q4gc\"]"));
+    private final SelenideElement productPrice = $(By.className("ShoppingcartItemList_ProductPrice__mainCostPrice__t4iks"));
+    private final SelenideElement productPrice2 = $(By.cssSelector("[class=SnowShoppingcartProductList_Product__productPriceDesktop__haas9]>div"));
+    private final SelenideElement totalPrice = $(By.cssSelector("h4[class*=\"ShoppingcartOrderOverview_OrderTotal__largeTextSize__18zkw\"]"));
+    private final SelenideElement totalPrice2 = $(By.tagName("h2"));
+    private final SelenideElement deleteOkBtn = $(By.cssSelector("button[class*=\"ShoppingcartItemList_ControlActionGroup__btn__xpegy\"]"));
+    private final ElementsCollection deleteOkBtn2 = $$(By.cssSelector("button[class*=\"snow-ali-kit_Button-Primary__button__acii72\"]"));
+    private final SelenideElement emptyCartText = $(By.cssSelector("p[class*=\"ShoppingcartStates_CartState__heading__1ww0f\"]"));
+    private final SelenideElement emptyCartText2 = $(By.cssSelector("h1[class*=\"SnowShoppingcartStates_EmptyPage__emptyMargin__2kupu\"]"));
+    private final ElementsCollection deleteBtn = $$(By.className("ShoppingcartItemList_ControlActionGroup__actionIcon__xpegy"));
+    private final SelenideElement deleteBtn2 = $(By.cssSelector("svg[class*=\"SnowShoppingcartHeader_Header__removeIcon__o27uc\"]"));
+    private final SelenideElement loginBtn = $(By.cssSelector("button[class*=\"TopHeadV2_ProfileEntryBlock__button__156t9\"]"));
+    private final SelenideElement myProfileBtn = $(By.cssSelector("a[href*=\"index.htm?tracelog=ws_topbar\"]"));
+    private final SelenideElement maxAmountTooltip = $(By.cssSelector("div[data-type=\"tooltip\"]"));
+    private final SelenideElement amountInput = $(By.cssSelector("input[class=\"ShoppingcartItemList_NumActionGroup__numInput__ehpij\"]"));
+    private final SelenideElement amountInput2 = $(By.cssSelector("div[class=\"SnowShoppingcartProductList_Product__productNumAction__haas9\"]"));
+    private final ElementsCollection addOneMoreBtn = $$(By.cssSelector("button[class*=\"ShoppingcartItemList_NumActionGroup__numBtn__ehpij\"]"));
+    private final ElementsCollection addOneMoreBtn2 = $$(By.cssSelector("button[class*=\"SnowShoppingcartProductList_ProductNumAction__button__1yo4e\"]"));
 
     public CartPage clickSelectAllProducts() {
         if (selectAllProducts.exists()) {
@@ -61,23 +60,29 @@ public class CartPage {
         return this;
     }
 
-    public CartPage checkBordersOfProductAmount() {
+    public CartPage checkMaxAmountOfProduct() {
         if (deleteBtn.get(1).exists()) {
-            amountInput.sendKeys("51");
-            Assert.assertEquals(amountInput.getValue(), "50");
+            amountInput.sendKeys("301");
+            Assert.assertEquals(amountInput.getValue(), "300");
             Assert.assertFalse(addOneMoreBtn.get(1).isEnabled());
             addOneMoreBtn.get(1).click();
             Assert.assertEquals(maxAmountTooltip.getText(), "Количество ограничено");
-            amountInput.sendKeys(Keys.chord(Keys.COMMAND + "a"));
-            amountInput.sendKeys("1");
-            amountInput.sendKeys(Keys.chord(Keys.COMMAND + "a"));
-            amountInput.sendKeys("0");
-            Assert.assertEquals(amountInput.getValue(), "1");
         } else {
             while (addOneMoreBtn2.get(1).isEnabled()) {
                 addOneMoreBtn2.get(1).click();
             }
             Assert.assertEquals(amountInput2.getText(), "50");
+        }
+        return this;
+    }
+
+    public CartPage checkMinAmountOfProduct() {
+        if (deleteBtn.get(1).exists()) {
+            amountInput.sendKeys(Keys.chord(Keys.COMMAND + "a"));
+            amountInput.sendKeys("1");
+            amountInput.sendKeys(Keys.chord(Keys.COMMAND + "a"));
+            amountInput.sendKeys("0");
+            Assert.assertEquals(amountInput.getValue(), "1");
         }
         return this;
     }

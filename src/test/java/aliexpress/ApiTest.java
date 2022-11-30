@@ -17,22 +17,22 @@ public class ApiTest {
         baseURI = "https://aliexpress.ru";
     }
 
-    @Test (priority = 10)
+    @Test(priority = 10, description = "API test - POST - Проверка фильтра бесплатной доставки")
     public void post_checkFreeShippingFilter_test() {
         String body = "{\"catId\":\"202000005\",\"g\":\"n\",\"storeIds\":[],\"brandValueIds\":\"\",\"pvid\":\"\",\"isBigSale\":\"n\",\"isFreeShip\":\"y\"," +
                 "\"isFavorite\":\"n\",\"page\":1,\"searchInfo\":\"searchId:0\"}";
         Response response = given().header("Content-Type", "application/json").body(body).post("/aer-webapi/v1/search?_bx-v=2.2.3");
         response.then().assertThat().statusCode(200);
-        for (int i = 0; i<20; i++){
-            Assert.assertEquals(response.then().extract().response().jsonPath().getString("data.productsFeed.products["+i+"].freeDelivery"), "true");
+        for (int i = 0; i < 20; i++) {
+            Assert.assertEquals(response.then().extract().response().jsonPath().getString("data.productsFeed.products[" + i + "].freeDelivery"), "true");
         }
     }
 
-    @Test (priority = 11)
+    @Test(priority = 11, description = "API test - GET - Проверка того, что корзина пустая")
     public void get_checkCartCount_test() {
         Response response = given().header("Content-Type", "application/json").get("/aer-jsonapi/v1/web/cart/count");
         response.then().assertThat().statusCode(200);
-            Assert.assertEquals(response.then().extract().response().jsonPath().getString("data.data.count"), "0");
+        Assert.assertEquals(response.then().extract().response().jsonPath().getString("data.data.count"), "0");
     }
 
     @AfterTest

@@ -9,7 +9,7 @@ public abstract class DriverManager {
     public static ThreadLocal<WebDriver> webDriver = new ThreadLocal<>();
 
     {
-        if(webDriver.get() == null) {
+        if (webDriver.get() == null) {
             createDriver();
         }
     }
@@ -30,5 +30,4 @@ public abstract class DriverManager {
             webDriver.remove();
         }
     }
-
 }

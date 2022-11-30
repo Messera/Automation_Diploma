@@ -7,12 +7,13 @@ import org.testng.annotations.Test;
 
 public class NothingFoundTest extends SelenideBaseTest {
 
-    @Test(priority = 6, description = "Проверка на ввод некорректных данных")
+    @Test(priority = 6, description = "Проверка на ввод некорректных данных (ничего не найдено в поиске товаров)")
     public void checkNothingFound_Test() {
         get(HomePage.class)
                 .enterSearch("findnothingplease")
                 .checkNothingFoundText();
     }
+
     @AfterTest
     public void postcondition() {
         Selenide.closeWebDriver();

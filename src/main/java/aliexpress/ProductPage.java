@@ -11,11 +11,10 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class ProductPage {
 
-    private SelenideElement cartBtn = $(By.cssSelector("a[href*=\"shopcartDetail\"]"));
-    private SelenideElement cartCount = $(By.className("snow-ali-kit_Tag__words__afvess"));
-    private SelenideElement addToCartBtn = $(By.cssSelector("span[class*=\"SnowPriceButton\"]"));
-    private SelenideElement productName = $(By.cssSelector("h1"));
-    private SelenideElement productPrice = $(By.className("snow-price_SnowPrice__mainS__18x8np"));
+    private final SelenideElement cartBtn = $(By.cssSelector("a[href*=\"shopcartDetail\"]"));
+    private final SelenideElement addToCartBtn = $(By.cssSelector("span[class*=\"SnowPriceButton\"]"));
+    private final SelenideElement productName = $(By.cssSelector("h1"));
+    private final SelenideElement productPrice = $(By.className("snow-price_SnowPrice__mainS__18x8np"));
 
     public ProductPage clickCartBtn() {
         cartBtn.click();

@@ -47,7 +47,8 @@ public class CartTest extends SelenideBaseTest {
     @Test(priority = 4, description = "Проверка поля количество товара на граничные значения и значения, превышающие допустимые")
     public void checkMaxAmount_Test() {
         get(CartPage.class)
-                .checkBordersOfProductAmount();
+                .checkMaxAmountOfProduct()
+                .checkMinAmountOfProduct();
     }
 
     @Test(priority = 5, description = "Тест, воспроизводящий баг корзины")
@@ -57,6 +58,7 @@ public class CartTest extends SelenideBaseTest {
                 .checkEmptyCartText()
                 .checkEmptyCartCount();
     }
+
     @AfterTest
     public void postcondition() {
         Selenide.closeWebDriver();
